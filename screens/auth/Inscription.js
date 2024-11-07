@@ -1,15 +1,35 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Alert } from 'react-native'
 import React, {useState} from 'react'
 import InputBox from '../../components/Forms/InputBox'
+import SubmitButton from '../../components/Forms/SubmitButton'
 
 const Inscription = () => {
+  //useState
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  //Function
 
+  //Btn function
+  const handleSubmit = () => {
+    try {
+      setLoading(true)
+      if (!name || !email || !password) {
+        Alert.alert("rempliisez les champs")
+      }
+      setLoading(false);
+      console.log("Register => ", {name, email, password});
+      
+      
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>Rjhh</Text>
+      <Text style={styles.pageTitle}>Register</Text>
       <View style={{ marginHorizontal: 20}}>
           <InputBox inputTitle={"Name"} value={name} setValue={setName} />
           <InputBox inputTitle={"Email"} 
@@ -23,7 +43,8 @@ const Inscription = () => {
           value={password} setValue={setPassword}
         />
       </View>
-      <Text>{JSON.stringify({name, email, password}, null, 4)} </Text>
+      {/* <Text>{JSON.stringify({name, email, password}, null, 4)} </Text> */}
+      <SubmitButton btnTitle="Register" loading={loading} handleSubmit={handleSubmit} />
     </View>    
   )
 }
