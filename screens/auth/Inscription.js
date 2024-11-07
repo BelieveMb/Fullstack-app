@@ -16,7 +16,9 @@ const Inscription = () => {
     try {
       setLoading(true)
       if (!name || !email || !password) {
-        Alert.alert("rempliisez les champs")
+        Alert.alert("rempliisez les champs");
+        setLoading(false);
+        return;
       }
       setLoading(false);
       console.log("Register => ", {name, email, password});
@@ -45,6 +47,8 @@ const Inscription = () => {
       </View>
       {/* <Text>{JSON.stringify({name, email, password}, null, 4)} </Text> */}
       <SubmitButton btnTitle="Register" loading={loading} handleSubmit={handleSubmit} />
+
+      <Text style={styles.linkText}>Deja inscrit ?? <Text style={styles.link}>SE CONNECTER</Text> </Text>
     </View>    
   )
 }
@@ -69,7 +73,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 10,
     color: "#af9f85"
-  }
+  },
+  linkText: {
+    textAlign: 'center',
+  },
+  link: {
+    color: "red",
+  },
 })
 
 export default Inscription
