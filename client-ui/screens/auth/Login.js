@@ -4,7 +4,7 @@ import InputBox from '../../components/Forms/InputBox'
 import SubmitButton from '../../components/Forms/SubmitButton'
 
 
-const Login = () => {
+const Login = ({navigation}) => {
    //useState
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
@@ -31,7 +31,7 @@ const Login = () => {
    }
    return (
      <View style={styles.container}>
-       <Text style={styles.pageTitle}>Login ok</Text>
+       <Text style={styles.pageTitle}>Login </Text>
        <View style={{ marginHorizontal: 20}}>
            <InputBox inputTitle={"Email"} 
              keyboardType = "email-address"
@@ -47,7 +47,9 @@ const Login = () => {
        {/* <Text>{JSON.stringify({name, email, password}, null, 4)} </Text> */}
        <SubmitButton btnTitle="Login" loading={loading} handleSubmit={handleSubmit} />
  
-       <Text style={styles.linkText}>Nouvel user ?? <Text style={styles.link}>S'INSCRIRE</Text> </Text>
+       <Text style={styles.linkText}>Nouvel user ??
+        <Text style={styles.link} onPress={()=> navigation.navigate("RegisterUser")}> S'INSCRIRE</Text> 
+       </Text>
      </View>    
    )
 }

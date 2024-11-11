@@ -45,7 +45,7 @@ const RegisterUser = () => {
           value={password} setValue={setPassword}
         />
       </View>
-      {/* <Text>{JSON.stringify({name, email, password}, null, 4)} </Text> */}
+      {/* <Text>{JSON.stringify({name,  email, password}, null, 4)} </Text> */}
       <SubmitButton btnTitle="Register" loading={loading} handleSubmit={handleSubmit} />
 
       <Text style={styles.linkText}>Deja inscrit ?? <Text style={styles.link}>SE CONNECTER</Text> </Text>
