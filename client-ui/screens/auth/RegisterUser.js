@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import InputBox from '../../components/Forms/InputBox'
 import SubmitButton from '../../components/Forms/SubmitButton'
 
-const RegisterUser = () => {
+const RegisterUser = ({ navigation }) => {
   //useState
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -48,7 +48,9 @@ const RegisterUser = () => {
       {/* <Text>{JSON.stringify({name,  email, password}, null, 4)} </Text> */}
       <SubmitButton btnTitle="Register" loading={loading} handleSubmit={handleSubmit} />
 
-      <Text style={styles.linkText}>Deja inscrit ?? <Text style={styles.link}>SE CONNECTER</Text> </Text>
+      <Text style={styles.linkText}>Deja inscrit ?? {" "}
+        <Text style={styles.link} onPress={()=> navigation.navigate("Login")}>SE CONNECTER</Text> 
+      </Text>
     </View>    
   )
 }
